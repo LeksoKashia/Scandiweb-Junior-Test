@@ -17,8 +17,10 @@ class ProductController extends DatabaseConnection{
           $args[] = $_POST[$field];
         }
 
-        $product = new $product_type(...$args);
-        $this->insert($product);
+        
+        echo $_POST['weight'];
+        $product = new $type(...$args);
+        return $product->deliver();
       }
     
 } 
@@ -30,7 +32,7 @@ class ProductController extends DatabaseConnection{
           $measurment = $type::$measurment;
           $unit = $type::$unit;
           echo   "<div class='card'>
-          <input type='checkbox' value='{$card['sku']}' name='leks[]' class='.delete-checkbox' />
+          <input type='checkbox' value='{$card['sku']}' name='leks[]' class='delete-checkbox' />
           <p> $card[sku] </p>
           <p> $card[name] </p>
           <p> $card[price] $</p>

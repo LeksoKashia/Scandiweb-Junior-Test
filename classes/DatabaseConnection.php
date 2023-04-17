@@ -4,53 +4,44 @@ class DatabaseConnection{
   private $host = "localhost";
   private $user = "root";
   private $password = "";
-  private $dbName = "testing";
+  private $dbName = "scandiweb";
+  private $conn;
 
-  protected function connect(){
+  public function __construct() {
     $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbName;
-    $pdo = new PDO($dsn, $this->user, $this->password);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    return $pdo;
+    $this->conn = new PDO($dsn, $this->user, $this->password);
+    $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   }
 
   public function data(){
     $sql = "SELECT * FROM products";
-    $stmt = $this->connect()->query($sql);
+    $stmt = $this->conn->query($sql);
     $results = $stmt->fetchAll();
     return $results;
   }
 
-
-  public function insert($values) {
-    $check = "SELECT * FROM products WHERE SKU = '$values->sku'";
-    $checkResult = $this->connect()->query($check);
-    $checkRows = $checkResult->fetchColumn();
-    if ($checkRows > 0) {
+  public function insertProduct($sku,$name,$price, $type, $value) {
+    $checkQuery = "SELECT COUNT(*) FROM products WHERE SKU = ?";
+    $checkStmt = $this->conn->prepare($checkQuery);
+    $checkStmt->execute([$sku]);
+    $existingProductsCount = $checkStmt->fetchColumn();
+    if ($existingProductsCount > 0) {
       echo "<h4 class='danger'>A product with the specified SKU already exists</h4>";
-
-    }else{
-      $query = "INSERT INTO products (SKU, Name, Price, Type, Value) VALUES (?, ?, ?, ?, ?)";
-
-      $res = $this->connect()->prepare($query);
-      $res->execute([$values->sku, $values->name, $values->price, $values->type, $values->value]);
-    
-      if ($res) {
-          header('Location:index.php');
+    } else {
+      $insertQuery = "INSERT INTO products (SKU, Name, Price, Type, Value) VALUES (?, ?, ?, ?, ?)";
+      $insertStmt = $this->conn->prepare($insertQuery);
+      $insertStmt->execute([$sku, $name, $price, $type, $value]);
+      if ($insertStmt) {
+        header('Location: index.php');
       }
     }
   }
 
   public function delete($checkeds){
-
-    $pdo = $this->connect();
     $sql = "DELETE FROM products WHERE sku = ?";
-    $stmt = $pdo->prepare($sql);
-
+    $stmt = $this->conn->prepare($sql);
     foreach ($checkeds as $sku) {
         $stmt->execute([$sku]);
     }
-
-  
-
-}
+  }
 }

@@ -97,7 +97,7 @@ include 'autoloader.php';
           <div class="input-div">
 
             <span class="third">Weight (KG)</span>
-            <input type="text" class="weight" name="weight" id="weight" placeholder="#wight">
+            <input type="text" class="weight" name="weight" id="weight" placeholder="#weight">
           </div>
           <p class="description">Please, provide Book weight in KG</p>
         </div>
@@ -117,7 +117,6 @@ include 'autoloader.php';
 </div>
 
     </form>
-
     <footer>
       <hr />
       <h3>Scandiweb Test assignment</h3>
@@ -125,50 +124,8 @@ include 'autoloader.php';
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="add.js"></script>
 <script>
-$(document).ready(function() {
-  $('#productType').change(function(){
-    $('#dvd-fields').toggle($(this).val() == 'DVD');
-    $('#book-fields').toggle($(this).val() == 'Book');
-    $('#furniture-fields').toggle($(this).val() == 'Furniture');
-  });
-});
-
-
-// $('.main-form').submit(function(event) {
-//   const selector = $('.selector');
-//   const inputs = [$('.sku'), $('.name'), $('.price')];
-//   for (const input of inputs) {
-//     if (input.val() === '') {
-//       event.preventDefault();
-//       showErrorModal(`Please fill in the ${input.attr('placeholder')} field.`);
-//       return;
-//     }
-//   }
-
-//   if (!selector.val()) {
-//   showErrorModal('Please select an option.');
-//   event.preventDefault();
-// } else {
-//   const visibleInputs = $('#dvd-fields:visible .size, #book-fields:visible .weight, #other-fields:visible .height, .width, .length').filter(':visible');
-//   const emptyInput = visibleInputs.filter((i, el) => !$(el).val())[0];
-//   if (emptyInput) {
-//     showErrorModal(`Please fill in the ${$(emptyInput).attr('placeholder')} field.`);
-//     event.preventDefault();
-//   }
-// }
-
-// function showErrorModal(message) {
-//   const modal = $('#my-modal');
-//   const modalText = $('#modal-text');
-//   modalText.text(message);
-//   modal.css('display', 'block');
-//   setTimeout(() => modal.css('display', 'none'), 1000);
-// }
-// });
-
-
-
 </script>
   </body>
 </html>

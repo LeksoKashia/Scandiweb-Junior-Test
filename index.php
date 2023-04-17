@@ -26,8 +26,6 @@ include 'autoloader.php';
   </header>
   <hr />
 
-
-  
   <?php
 
         $data = new ProductController();
