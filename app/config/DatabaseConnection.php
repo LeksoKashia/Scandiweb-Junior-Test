@@ -21,6 +21,7 @@ class DatabaseConnection{
     return $results;
   }
 
+  
   public function insertProduct($sku,$name,$price, $type, $value) {
     $checkQuery = "SELECT COUNT(*) FROM products WHERE SKU = ?";
     $checkStmt = $this->conn->prepare($checkQuery);

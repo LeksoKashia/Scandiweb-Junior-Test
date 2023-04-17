@@ -14,7 +14,6 @@ include 'autoloader.php';
   <body>
     <header>
       <h1>Product Add</h1>
-
       <div class="buttons">
         <a href="/Scandiweb/public/">
           <button class="red">Cancel</button>
@@ -55,8 +54,6 @@ include 'autoloader.php';
       </select>
     </div>
     <br>
-
-  
 
 
       <div id="input-fields">

@@ -27,7 +27,6 @@ include 'autoloader.php';
   <hr />
 
   <?php
-
         $data = new ProductController();
         $data->delete_check();
         $data->displayData();

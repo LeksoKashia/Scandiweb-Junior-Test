@@ -20,7 +20,6 @@ class ProductController extends DatabaseConnection{
         $product = new $type(...$args);
         return $product->deliver();
       }
-    
 } 
 
     public function displayData(){
