@@ -1,5 +1,6 @@
 <?php
 
+
 class DatabaseConnection{
   private $host = "localhost";
   private $user = "root";
