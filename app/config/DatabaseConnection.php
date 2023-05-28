@@ -1,7 +1,9 @@
 <?php
 
 
-class DatabaseConnection{
+class DatabaseConnection implements DBInterface{
+
+
   private $host = "localhost";
   private $user = "root";
   private $password = "";

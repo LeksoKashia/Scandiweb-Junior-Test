@@ -1,6 +1,6 @@
 <?php
 
-class ProductController extends DatabaseConnection{
+class ProductController extends DatabaseConnection implements ControllerInterface{
 
 
 

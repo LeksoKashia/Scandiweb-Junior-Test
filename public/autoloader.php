@@ -11,8 +11,10 @@ function myAutoLoader($className){
     include_once $fullPath;
   }else if($className == 'ProductController'){
     include "../app/controllers/". $className . $extension;
-  }else{
+  }else if($className == 'DatabaseConnection'){
     include "../app/config/". $className . $extension;
+  }else{
+    include "../app/interfaces/" . $className . $extension;
   }
 
 }

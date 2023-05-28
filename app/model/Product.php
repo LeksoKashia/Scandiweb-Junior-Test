@@ -1,6 +1,6 @@
 <?php
 
-abstract class Product
+abstract class Product implements ProductInterface
 {
     protected $sku;
     protected $name;
