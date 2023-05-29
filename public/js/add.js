@@ -22,7 +22,13 @@ $('.main-form').submit(function(event) {
   if ($('#book-fields').is(':visible')) {
     visibleInputs.push($('.weight'));
   }
-
+  for (const input of inputs) {
+    if (input.val() === '') {
+      event.preventDefault();
+      showErrorModal(`Please fill in the ${input.attr('placeholder')} field.`);
+      return;
+    }
+  }
 
   for (const input of visibleInputs) {
     if (input.val() === '') {
@@ -32,13 +38,7 @@ $('.main-form').submit(function(event) {
     }
   }
 
-  for (const input of inputs) {
-    if (input.val() === '') {
-      event.preventDefault();
-      showErrorModal(`Please fill in the ${input.attr('placeholder')} field.`);
-      return;
-    }
-  }
+
 
   if (!selector.val()) {
     showErrorModal('Please select an option.');

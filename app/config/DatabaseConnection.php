@@ -27,12 +27,13 @@ class DatabaseConnection implements DBInterface{
   public function insertProduct($sku,$name,$price, $type, $value) {
     $checkQuery = "SELECT COUNT(*) FROM products WHERE SKU = ?";
     $checkStmt = $this->conn->prepare($checkQuery);
-    $checkStmt->execute([$sku]);
+    $checkStmt->execute([substr($sku, 0, 15)]);
     $existingProductsCount = $checkStmt->fetchColumn();
     if ($existingProductsCount > 0) {
+      echo $sku;
       echo "<h4 class='danger'>A product with the specified SKU already exists</h4>";
     } else {
-      $insertQuery = "INSERT INTO products (SKU, Name, Price, Type, Value) VALUES (?, ?, ?, ?, ?)";
+      $insertQuery = "INSERT INTO products (sku, name, price, type, value) VALUES (?, ?, ?, ?, ?)";
       $insertStmt = $this->conn->prepare($insertQuery);
       $insertStmt->execute([$sku, $name, $price, $type, $value]);
       if ($insertStmt) {
