@@ -12,17 +12,18 @@ include 'autoloader.php';
     <title>Document</title>
   </head>
   <body>
+  <form class="main-form" id="product_form" method="POST">
     <header>
       <h1>Product Add</h1>
       <div class="buttons">
+      <button type="submit" name="submit" class="green">Save</button>
         <a href="/Scandiweb/public/">
-          <button class="red">Cancel</button>
+          <button class="red" type="button">Cancel</button>
         </a>
       </div>
     </header>
 
     <hr />
-    <form class="main-form" method="POST">
       <div class="input-div">
         <span class="first">SKU</span>
         <input type="text" class="sku" name="sku" id="sku" placeholder="sku" />
@@ -101,10 +102,6 @@ include 'autoloader.php';
      
       </div>
 
-      
-      <div class='form-div'>
-        <button type="submit" name="submit" class="green">Save</button>
-      </div>
 
       <div id="my-modal" class="modal">
   <div class="modal-content">

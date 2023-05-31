@@ -18,9 +18,9 @@ include 'autoloader.php';
     <h1>Product List</h1>
     <div class="buttons">
       <a href="productadd.php">
-        <button class="green"  type="button" name="myButton">Add</button>
+        <button class="green"  type="button" name="myButton">ADD</button>
       </a>
-      <button class="red"  type="submit" name="delete" value="mass_delete">Mass Delete</button>
+      <button class="red"  type="submit" name="delete" value="mass_delete">MASS DELETE</button>
 
     </div>
   </header>
