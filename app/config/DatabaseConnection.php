@@ -27,7 +27,7 @@ class DatabaseConnection implements DBInterface{
   public function insertProduct($sku,$name,$price, $type, $value) {
     $checkQuery = "SELECT COUNT(*) FROM products WHERE SKU = ?";
     $checkStmt = $this->conn->prepare($checkQuery);
-    $checkStmt->execute([$sku]);
+    $checkStmt->execute([substr($sku, 0, 15)]);
     $existingProductsCount = $checkStmt->fetchColumn();
     if ($existingProductsCount > 0) {
       echo $sku;
